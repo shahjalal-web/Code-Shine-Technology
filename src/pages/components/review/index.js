@@ -151,104 +151,106 @@ const Review = () => {
         <meta name="author" content="Code Shine Technology" />
       </Head>
 
-      <div className="py-8 px-4 max-w-xl mx-auto">
+      <div className="py-8 px-4 max-w-[1200px] mx-auto">
         <h2 className="text-4xl font-bold mb-6 text-center">
           What our client say
         </h2>
 
-        <div className="relative w-full">
-          {/* Carousel container with buttons */}
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+          <div className="relative w-full">
+            {/* Carousel container with buttons */}
 
-          <div
-            ref={carouselRef}
-            className="carousel carousel-center bg-slate-900 rounded-box w-full space-x-4 p-4 mb-5 overflow-x-auto scrollbar-hide flex items-center"
-          >
-            {reviews
-              ?.slice()
-              .reverse()
-              .map((review, index) => (
-                <div key={index} className="carousel-item w-full h-auto">
-                  <div className="max-w-sm mx-auto p-6 bg-slate-950 shadow shadow-blue-500 rounded-lg hover:shadow-2xl hover:shadow-blue-600 transition-shadow duration-300 ease-in-out">
-                    <div className="flex items-center">
-                      <img
-                        className="w-16 h-16 rounded-full border-2 border-blue-500 shadow-md"
-                        src={review.customerImage}
-                        alt={`Profile picture of ${review.customerName}`}
-                      />
-                      <div className="ml-4">
-                        <h2 className="text-lg font-semibold ">
-                          {review.customerName}
-                        </h2>
-                        <p className="text-sm ">{review.customerEmail}</p>
+            <div
+              ref={carouselRef}
+              className="carousel carousel-center bg-slate-900 rounded-box w-full space-x-4 p-4 mb-5 overflow-x-auto scrollbar-hide flex items-center"
+            >
+              {reviews
+                ?.slice()
+                .reverse()
+                .map((review, index) => (
+                  <div key={index} className="carousel-item w-full h-auto">
+                    <div className="max-w-sm mx-auto p-6 bg-slate-950 shadow shadow-blue-500 rounded-lg hover:shadow-2xl hover:shadow-blue-600 transition-shadow duration-300 ease-in-out">
+                      <div className="flex items-center">
+                        <img
+                          className="w-16 h-16 rounded-full border-2 border-blue-500 shadow-md"
+                          src={review.customerImage}
+                          alt={`Profile picture of ${review.customerName}`}
+                        />
+                        <div className="ml-4">
+                          <h2 className="text-lg font-semibold ">
+                            {review.customerName}
+                          </h2>
+                          <p className="text-sm ">{review.customerEmail}</p>
+                        </div>
                       </div>
+                      <ReviewText review={review.review} wordLimit={40} />
                     </div>
-                    <ReviewText review={review.review} wordLimit={40} />
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
+
+            {/* Left Arrow Button */}
+            <button
+              onClick={scrollLeft}
+              className="absolute left-0 top-1/2 ml-2 transform -translate-y-1/2 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition"
+            >
+              <FaArrowLeft></FaArrowLeft>
+            </button>
+
+            {/* Right Arrow Button */}
+            <button
+              onClick={scrollRight}
+              className="absolute right-0 top-1/2 mr-2 transform -translate-y-1/2 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition"
+            >
+              <FaArrowRight />
+            </button>
           </div>
+          {/* Review Form */}
 
-          {/* Left Arrow Button */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 ml-2 transform -translate-y-1/2 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition"
+          <form
+            onSubmit={handleSubmit}
+            className="mb-8 bg-slate-900 p-6 rounded text-green-500"
           >
-            <FaArrowLeft></FaArrowLeft>
-          </button>
+            <h2 className="text-2xl font-bold mb-6 text-center">
+              Share Your Experience with Us
+            </h2>
 
-          {/* Right Arrow Button */}
-          <button
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 mr-2 transform -translate-y-1/2 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition"
-          >
-            <FaArrowRight />
-          </button>
+            <div className="mb-4">
+              <label htmlFor="customerId" className="block font-semibold mb-2">
+                Customer ID
+              </label>
+              <input
+                type="text"
+                id="customerId"
+                value={customerId}
+                placeholder="Enter your customerId"
+                onChange={(e) => setCustomerId(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="review" className="block font-semibold mb-2">
+                Review
+              </label>
+              <textarea
+                id="review"
+                value={reviewText}
+                placeholder="Enter your valuable opinion"
+                onChange={(e) => setReviewText(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <p className="text-green-500">{seccess}</p>
+            <button
+              type="submit"
+              className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+            >
+              Submit Review
+            </button>
+          </form>
         </div>
-        {/* Review Form */}
-
-        <form
-          onSubmit={handleSubmit}
-          className="mb-8 bg-slate-900 p-6 rounded text-green-500"
-        >
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            Share Your Experience with Us
-          </h2>
-
-          <div className="mb-4">
-            <label htmlFor="customerId" className="block font-semibold mb-2">
-              Customer ID
-            </label>
-            <input
-              type="text"
-              id="customerId"
-              value={customerId}
-              placeholder="Enter your customerId"
-              onChange={(e) => setCustomerId(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="review" className="block font-semibold mb-2">
-              Review
-            </label>
-            <textarea
-              id="review"
-              value={reviewText}
-              placeholder="Enter your valuable opinion"
-              onChange={(e) => setReviewText(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          <p className="text-green-500">{seccess}</p>
-          <button
-            type="submit"
-            className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-          >
-            Submit Review
-          </button>
-        </form>
       </div>
     </div>
   );

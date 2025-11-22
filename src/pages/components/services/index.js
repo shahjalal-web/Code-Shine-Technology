@@ -1,4 +1,8 @@
+// components/Services.jsx
+"use client";
+import React from "react";
 import Head from "next/head";
+import { motion } from "framer-motion";
 import {
   FaBootstrap,
   FaCss3,
@@ -8,115 +12,153 @@ import {
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { SiExpress, SiMongodb, SiMysql, SiTailwindcss } from "react-icons/si";
+import Link from "next/link";
 
-const Services = () => {
+export default function Services() {
   return (
-    <div>
+    <div className="bg-white text-gray-800">
       <Head>
         <title>Our Services | Code Shine Technology</title>
-        <meta
-          name="description"
-          content="Discover the range of services offered by Code Shine Technology. From web development and design to digital solutions, learn how we can help your business succeed."
-        />
-        <meta
-          name="keywords"
-          content="services, web development, design, digital solutions, Code Shine Technology, business solutions"
-        />
-        <meta
-          property="og:title"
-          content="Our Services | Code Shine Technology"
-        />
-        <meta
-          property="og:description"
-          content="Explore the services provided by Code Shine Technology. Find out how our expertise in web development, design, and digital solutions can benefit your business."
-        />
-        <meta
-          property="og:image"
-          content="https://codeshinetechnology.com/codeshinetechnology.png"
-        />
-        <meta
-          property="og:url"
-          content="https://codeshinetechnology.com/components/services"
-        />
-        <meta property="og:site_name" content="Code Shine Technology" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="author" content="Code Shine Technology" />
+        <meta name="description" content="Premium web development and design services." />
       </Head>
 
-      <div className="max-w-[1500px] mx-auto px-4">
-        <h1 className="text-center text-4xl md:text-5xl font-serif font-bold uppercase text-white my-10">
+      {/* HEADER SECTION */}
+      <section className="max-w-[1500px] mx-auto text-center py-14 px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold"
+        >
           Our Services
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-          <div className="shadow-lg shadow-blue-500 hover:shadow-blue-600 hover:shadow-2xl px-4 py-6 md:py-10 text-center transition-transform transform hover:-translate-y-2">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold uppercase text-blue-400">
-              Front End<br />
-              <span className="text-lime-400">Web Development</span>
-            </h2>
-            <div className="flex justify-around my-4 mb-6">
-              <FaHtml5 className="text-3xl text-red-500" />
-              <FaCss3 className="text-3xl text-blue-500" />
-              <FaReact className="text-3xl text-blue-400" />
-              <IoLogoJavascript className="text-3xl text-yellow-400" />
-              <FaBootstrap className="text-3xl text-purple-500" />
-              <SiTailwindcss className="text-3xl text-teal-500" />
-            </div>
-            <p className="text-lg md:text-xl font-serif font-thin text-left text-white">
-              We craft visually stunning, responsive, and interactive interfaces
-              using HTML, CSS, JavaScript, React.js, Next.js, Bootstrap, and Tailwind CSS.
-              Our focus is on delivering seamless user experiences with top-notch design and functionality.
-            </p>
-          </div>
+        </motion.h1>
 
-          <div className="shadow-lg shadow-blue-500 hover:shadow-blue-600 hover:shadow-2xl px-4 py-6 md:py-10 text-center transition-transform transform hover:-translate-y-2">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold uppercase text-blue-400">
-              Back End<br />
-              <span className="text-lime-400">Web Development</span>
-            </h2>
-            <div className="flex justify-around my-4">
-              <IoLogoJavascript className="text-3xl text-yellow-400" />
-              <FaNodeJs className="text-3xl text-green-400" />
-              <SiExpress className="text-3xl text-green-400" />
-              <SiMongodb className="text-3xl text-green-400" />
-              <SiMysql className="text-3xl text-white" />
-            </div>
-            <p className="text-lg md:text-xl font-serif font-thin text-left text-white">
-              We specialize in robust and scalable back-end solutions using
-              Node.js, Express, and various databases like MongoDB and SQL. Our
-              services ensure your applications run smoothly, handle data
-              efficiently, and provide secure, reliable performance.
-            </p>
-          </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="mt-4 text-lg max-w-2xl mx-auto text-gray-600"
+        >
+          We build high-quality digital products with modern tools, clean
+          architecture and delightful user experiences.
+        </motion.p>
+      </section>
 
-          <div className="shadow-lg shadow-blue-500 hover:shadow-blue-600 hover:shadow-2xl px-4 py-6 md:py-10 text-center transition-transform transform hover:-translate-y-2">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold uppercase text-blue-400">
-              Full Stack<br />
-              <span className="text-lime-400">Web Development</span>
-            </h2>
-            <div className="flex justify-around my-4">
-              <FaHtml5 className="text-3xl text-red-500" />
-              <FaCss3 className="text-3xl text-blue-500" />
-              <FaReact className="text-3xl text-blue-400" />
-              <FaBootstrap className="text-3xl text-purple-500" />
-              <SiTailwindcss className="text-3xl text-teal-500" />
-              <IoLogoJavascript className="text-3xl text-yellow-400" />
-              <FaNodeJs className="text-3xl text-green-400" />
-              <SiExpress className="text-3xl text-green-400" />
-              <SiMongodb className="text-3xl text-green-400" />
-              <SiMysql className="text-3xl text-white" />
-            </div>
-            <p className="text-lg md:text-xl font-serif font-thin text-left text-white">
-              We offer comprehensive full stack development services, combining
-              both front-end and back-end expertise. Utilizing technologies like
-              React.js, Node.js, Express, and databases such as MongoDB and SQL,
-              we create complete, end-to-end solutions that are seamless,
-              efficient, and scalable.
-            </p>
-          </div>
+      {/* GRID */}
+      <section className="max-w-[1500px] mx-auto px-6 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+          {/* CARD 1 */}
+          <ServiceCard
+            title="Front-End Development"
+            desc="We create beautiful, responsive, fast UIs using React, Next.js, Tailwind CSS and more."
+            icons={[
+              FaHtml5,
+              FaCss3,
+              FaReact,
+              IoLogoJavascript,
+              SiTailwindcss,
+              FaBootstrap,
+            ]}
+          />
+
+          {/* CARD 2 */}
+          <ServiceCard
+            title="Back-End Development"
+            desc="Powerful, scalable and secure APIs built with Node.js, Express, MongoDB and SQL."
+            icons={[
+              IoLogoJavascript,
+              FaNodeJs,
+              SiExpress,
+              SiMongodb,
+              SiMysql,
+            ]}
+          />
+
+          {/* CARD 3 */}
+          <ServiceCard
+            title="Full Stack Development"
+            desc="We build complete end-to-end solutions including frontend, backend and database layers."
+            icons={[
+              FaHtml5,
+              FaCss3,
+              FaReact,
+              IoLogoJavascript,
+              FaNodeJs,
+              SiExpress,
+              SiMongodb,
+              SiMysql,
+            ]}
+          />
+
+          {/* CARD 4 */}
+          <ServiceCard
+            title="UI / UX & Product Design"
+            desc="Design systems, wireframes, interactive prototypes and user-focused interfaces."
+          />
+
+          {/* CARD 5 */}
+          <ServiceCard
+            title="E-commerce Solutions"
+            desc="Custom stores, admin dashboards & product systems using Shopify or headless commerce."
+          />
+
+          {/* CARD 6 */}
+          <ServiceCard
+            title="Maintenance & Support"
+            desc="Website updates, optimization, monitoring and long-term support plans."
+          />
         </div>
-      </div>
+      </section>
     </div>
   );
-};
+}
 
-export default Services;
+/* ------------------ CARD COMPONENT ------------------ */
+
+function ServiceCard({ title, desc, icons = [] }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      whileHover={{ y: -8 }}
+      className="bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all"
+    >
+      <h3 className="text-2xl font-semibold">{title}</h3>
+      <p className="mt-3 text-gray-600">{desc}</p>
+
+      {/* ICON LIST */}
+      {icons.length > 0 && (
+        <div className="flex flex-wrap gap-4 mt-6">
+          {icons.map((Icon, i) => (
+            <motion.span
+              key={i}
+              whileHover={{ scale: 1.15 }}
+              className="text-3xl text-gray-700"
+            >
+              <Icon />
+            </motion.span>
+          ))}
+        </div>
+      )}
+
+      {/* CTA */}
+      <div className="mt-6 flex justify-between items-center">
+        <Link
+          href="/components/contact"
+          className="text-sm font-medium text-blue-600 hover:underline"
+        >
+          Start Project →
+        </Link>
+
+        <Link
+          href="/components/project"
+          className="text-sm font-medium text-gray-500 hover:underline"
+        >
+          View Examples
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
